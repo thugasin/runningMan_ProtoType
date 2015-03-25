@@ -15,66 +15,16 @@
 {
     [super viewDidLoad];
     _demoNameArray = [[NSArray alloc]initWithObjects:
-                      @"基本地图功能-MapViewBaseDemo",
-                      @"多地图使用功能-MultiMapViewDemo",
-					  @"图层展示功能-MapViewDemo",
-                      @"地图操作功能-MapViewControlDemo",
-                      @"UI控制功能-MapViewUISettingDemo",
-					  @"定位功能-LocationDemo",
-					  @"覆盖物功能-AnnotationDemo",
-                      @"自定义绘制-CustomOverlayDemo",
-					  @"POI搜索功能-PoiSearchDemo",
-                      @"地理编码功能-GeocodeDemo",
-					  @"路径规划功能-RouteSearchDemo",
-                      @"公交线路查询-BusLineSearch",
-					  @"离线地图功能-OfflineDemo",
-                      @"热力图功能-HeatMapDemo",
-                      @"短串分享功能-ShortUrlShareDemo",
-                      @"云检索功能-CloudSearchDemo",
-                      @"调启百度导航功能-NavigationDemo",
-                      @"OpenGL绘制功能-OpenGLDemo",
+					  @"开启吃豆人",
 					  nil];
     _viewControllerTitleArray = [[NSArray alloc]initWithObjects:
-                                 @"基本地图功能",
-                                 @"多地图使用功能",
-                                 @"图层展示功能",
-                                 @"地图操作功能",
-                                 @"UI控制功能",
-                                 @"定位功能",
-                                 @"覆盖物功能",
-                                 @"自定义绘制",
-                                 @"POI搜索功能",
-                                 @"地理编码功能",
-                                 @"路径规划功能",
-                                 @"公交线路查询",
-                                 @"离线地图功能",
-                                 @"热力图功能",
-                                 @"短串分享功能",
-                                 @"云检索功能",
-                                 @"调启百度导航功能",
-                                 @"OpenGL绘制功能",nil];
+                                 @"吃豆人",
+                                 nil];
     
     _viewControllerArray = [[NSArray alloc]initWithObjects:
-                            @"MapViewBaseDemoViewController",
-                            @"MultiMapViewDemo",
-                            @"MapViewDemoViewController",
-                            @"MapViewControlDemoViewController",
-                            @"MapViewUISettingDemoViewController",
                             @"LocationDemoViewController",
-                            @"AnnotationDemoViewController",
-                            @"CustomOverlayDemoViewController",
-                            @"PoiSearchDemoViewController",
-                            @"GeocodeDemoViewController",
-                            @"RouteSearchDemoViewController",
-                            @"BusLineSearchViewController",
-                            @"OfflineDemoViewController",
-                            @"HeatMapDemo",
-                            @"ShortUrlShareDemoViewController",
-                            @"CloudSearchDemoViewController",
-                            @"NavigationDemoViewController",
-                            @"OpenGLDemoViewController",
                             nil];
-	self.title = [NSString stringWithFormat: @"欢迎使用百度地图iOS SDK %@", BMKGetMapApiVersion()];
+	self.title = @"RunningMan Demo";
     //适配ios7
     if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
     {

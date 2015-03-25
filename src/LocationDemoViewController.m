@@ -15,6 +15,8 @@
 
 @implementation LocationDemoViewController
 
+@synthesize playerObjectList;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -23,8 +25,7 @@
         _isSetMapSpan = false;
         _IsStartLocation = false;
         _locationTimes = 0;
-        playerObjectList = [NSMutableDictionary init];
-    }
+            }
     return self;
 }
 - (void)viewDidLoad {
@@ -35,12 +36,15 @@
         self.navigationController.navigationBar.translucent = NO;
     }
     _locService = [[BMKLocationService alloc]init];
-    [followHeadBtn setEnabled:NO];
-    [followingBtn setAlpha:0.6];
-    [followingBtn setEnabled:NO];
-    [followHeadBtn setAlpha:0.6];
-    [stopBtn setEnabled:NO];
-    [stopBtn setAlpha:0.6];
+
+    
+    Myself = [GameObject GameObject:@"" mapView:_mapView];
+    playerObjectList = [NSMutableDictionary new];
+    
+    [playerObjectList setObject:Myself forKey:Myself.uID];
+    
+    [playerObjectList retain];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -66,12 +70,6 @@
     
     [startBtn setEnabled:NO];
     [startBtn setAlpha:0.6];
-    [stopBtn setEnabled:YES];
-    [stopBtn setAlpha:1.0];
-    [followHeadBtn setEnabled:YES];
-    [followHeadBtn setAlpha:1.0];
-    [followingBtn setEnabled:YES];
-    [followingBtn setAlpha:1.0];
     
     BMKCoordinateRegion region;
     
@@ -81,10 +79,10 @@
         _isSetMapSpan = true;
         [_mapView setRegion:region animated:YES];
         
-        Myself = [GameObject GameObject:@"" mapView:_mapView];
-        [playerObjectList setObject:Myself forKey:Myself.uID];
-        
     }
+    
+    
+
 
     BMKLocationViewDisplayParam *displayParam = [[BMKLocationViewDisplayParam alloc]init];
     displayParam.isRotateAngleValid = true;// 跟随态旋转角度是否生效
@@ -99,40 +97,7 @@
 
     
 }
-//罗盘态
--(IBAction)startFollowHeading:(id)sender
-{
-    NSLog(@"进入罗盘态");
-    
-    _mapView.showsUserLocation = NO;
-    _mapView.userTrackingMode = BMKUserTrackingModeFollowWithHeading;
-    _mapView.showsUserLocation = YES;
-    
-}
-//跟随态
--(IBAction)startFollowing:(id)sender
-{
-    NSLog(@"进入跟随态");
-    
-    _mapView.showsUserLocation = NO;
-    _mapView.userTrackingMode = BMKUserTrackingModeFollow;
-    _mapView.showsUserLocation = YES;
-    
-}
-//停止定位
--(IBAction)stopLocation:(id)sender
-{
-    [_locService stopUserLocationService];
-    _mapView.showsUserLocation = NO;
-    [stopBtn setEnabled:NO];
-    [stopBtn setAlpha:0.6];
-    [followHeadBtn setEnabled:NO];
-    [followHeadBtn setAlpha:0.6];
-    [followingBtn setEnabled:NO];
-    [followingBtn setAlpha:0.6];
-    [startBtn setEnabled:YES];
-    [startBtn setAlpha:1.0];
-}
+
 
 /**
  *在地图View将要启动定位时，会调用此函数
@@ -161,7 +126,7 @@
 {
 //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     [_mapView updateLocationData:userLocation];
-    
+    int a =playerObjectList.count;
         [_mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
     
         
@@ -182,7 +147,6 @@
     
          _IsStartLocation = true;
     }
-    
 
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = NSNumberFormatterNoStyle;
@@ -195,9 +159,10 @@
     
     [formatter release];
     
-    NSString *urlString =@"http://192.168.1.102:10000/player/report?id=3&longitude=";
+    NSString *urlString =@"http://192.168.1.105:10000/player/report?id=";
+    NSString *lonString = @"&longitude=";
     NSString *laString =@"&latitude=";
-    NSString *postString = [[NSString alloc]initWithFormat:@"%@%@%@%@", urlString ,stringLongitude,laString,stringLatitude];
+    NSString *postString = [[NSString alloc]initWithFormat:@"%@%@%@%@%@%@", urlString ,Myself.uID,lonString, stringLongitude,laString,stringLatitude];
     
     NSURL *url = [NSURL URLWithString:postString];
     
@@ -221,26 +186,24 @@
         if (id == Myself.uID) {
             continue;
         }
-        NSString *latitude = [[[retData objectForKey:@"players"] objectAtIndex:i] objectForKey:@"latitude"];
-        NSString *longitude = [[[retData objectForKey:@"players"] objectAtIndex:i] objectForKey:@"longitude"];
+        
+        if (playerObjectList.count ==0 || [playerObjectList objectForKey:id] == nil)
+        {
+            GameObject *newPlayer = [GameObject GameObject:@"images/icon_center_point.png" mapView:_mapView];
+            [playerObjectList setObject:newPlayer forKey:newPlayer.uID];
+            CLLocationCoordinate2D coor;
+            
+            NSString *strLatitude = [[[retData objectForKey:@"players"] objectAtIndex:i] objectForKey:@"latitude"];
+            NSString *strLongitude = [[[retData objectForKey:@"players"] objectAtIndex:i] objectForKey:@"longitude"];
+            
+            
+            coor.latitude = [strLatitude longLongValue]*pow(10, -14);
+            coor.longitude = [strLongitude longLongValue]*pow(10, -14);
+            newPlayer.Coordinate = coor;
+            [newPlayer OnPain];
+        }
+
     }
-    
-    
-//    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\")Players(\")(:)(\\[)[[A-z0-9\",:(\\{)(\\})]*]*(\\])," options:NSRegularExpressionCaseInsensitive error:nil];
-//    
-//    NSTextCheckingResult *r = [regex firstMatchInString:strReturn options:NSMatchingReportCompletion range:NSMakeRange(0,strReturn.length)];
-//    
-//    NSString *playserInfoString = [NSString stringWithString:[strReturn substringWithRange:r.range]];
-//    
-    
-    
-//    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-//
-//    if (conn) {
-//        receiveData = [[NSMutableData data] retain];
-//    }
-//    
-//    [conn release];
 }
 
 /**
@@ -290,6 +253,7 @@
     {
         _mapView = nil;
     }
+    [playerObjectList release];
 }
 
 @end

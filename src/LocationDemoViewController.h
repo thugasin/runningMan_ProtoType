@@ -12,9 +12,7 @@
 @interface LocationDemoViewController :  UIViewController <BMKMapViewDelegate,BMKLocationServiceDelegate>{
     IBOutlet BMKMapView* _mapView;
     IBOutlet UIButton* startBtn;
-    IBOutlet UIButton* stopBtn;
-    IBOutlet UIButton* followingBtn;
-    IBOutlet UIButton* followHeadBtn;
+
     BMKLocationService* _locService;
     
     bool _isSetMapSpan;
@@ -22,11 +20,12 @@
     int _locationTimes;
     GameObject* Myself;  
     NSMutableArray* beanUidList;
-    NSMutableDictionary* playerObjectList;
+    NSString* str;
+    
 }
+
+@property(retain) NSMutableDictionary* playerObjectList;
+
 -(IBAction)startLocation:(id)sender;
--(IBAction)stopLocation:(id)sender;
--(IBAction)startFollowing:(id)sender;
--(IBAction)startFollowHeading:(id)sender;
 @end
 
