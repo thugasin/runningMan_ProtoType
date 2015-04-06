@@ -79,6 +79,8 @@
         _isSetMapSpan = true;
         [_mapView setRegion:region animated:YES];
         
+//        NSURL *url = [NSURL URLWithString:@"http://192.168.1.105:10000/clean?type=3"];
+//        [NSMutableURLRequest requestWithURL:url];
     }
     
     
@@ -126,8 +128,8 @@
 {
 //    NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     [_mapView updateLocationData:userLocation];
-    int a =playerObjectList.count;
-        [_mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
+
+    [_mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
     
         
         CLLocationCoordinate2D coors;

@@ -27,5 +27,6 @@
 @property(retain) NSMutableDictionary* playerObjectList;
 
 -(IBAction)startLocation:(id)sender;
+-(CLLocationCoordinate2D) centercoordination:(CLLocationCoordinate2D)x yCoordination:(CLLocationCoordinate2D)y;
 @end
 
