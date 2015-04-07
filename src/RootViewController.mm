@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "BMKVersion.h"
+#import "PacManLoginViewController.h"
 
 @implementation RootViewController
 
@@ -22,7 +23,7 @@
                                  nil];
     
     _viewControllerArray = [[NSArray alloc]initWithObjects:
-                            @"LocationDemoViewController",
+                            @"PacManLoginViewController",
                             nil];
 	self.title = @"RunningMan Demo";
     //适配ios7
@@ -63,9 +64,10 @@
     UIViewController* viewController = [[NSClassFromString([_viewControllerArray objectAtIndex:indexPath.row]) alloc] init];
     viewController.title = [_viewControllerTitleArray objectAtIndex:indexPath.row];
     UIBarButtonItem *customLeftBarButtonItem = [[UIBarButtonItem alloc] init];
-    customLeftBarButtonItem.title = @"返回";
-    self.navigationItem.backBarButtonItem = customLeftBarButtonItem;
+//    customLeftBarButtonItem.title = @"返回";
+//    self.navigationItem.backBarButtonItem = customLeftBarButtonItem;
     [self.navigationController pushViewController:viewController animated:YES];
+
 }
 
 

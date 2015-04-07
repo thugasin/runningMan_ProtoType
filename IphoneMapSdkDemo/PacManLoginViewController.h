@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LocationDemoViewController.h"
 
 @interface PacManLoginViewController : UIViewController
 {
@@ -15,6 +16,7 @@
 
 @property(nonatomic, assign) IBOutlet UITextField* phoneNumber;
 @property(nonatomic, assign) IBOutlet UITextField* ServerIP;
+@property(nonatomic, retain) LocationDemoViewController* locationViewController;
 
 -(IBAction)Login:(id)sender;
 @end

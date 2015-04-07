@@ -46,7 +46,7 @@
     UIBarButtonItem *customLeftBarButtonItem = [[UIBarButtonItem alloc] init];
     customLeftBarButtonItem.title = @"返回";
     self.navigationItem.backBarButtonItem = customLeftBarButtonItem;
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self.navigationController pushViewController:LDViewController animated:YES];
 }
 
 /*
