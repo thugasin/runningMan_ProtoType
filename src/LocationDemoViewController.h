@@ -26,7 +26,10 @@
 
 @property(retain) NSMutableDictionary* playerObjectList;
 
--(IBAction)startLocation:(id)sender;
+@property(nonatomic, copy) NSString* userID;
+@property(nonatomic, copy) NSString* ServerIP;
+
+-(void)startLocation;
 -(CLLocationCoordinate2D) centercoordination:(CLLocationCoordinate2D)x yCoordination:(CLLocationCoordinate2D)y;
 @end
 

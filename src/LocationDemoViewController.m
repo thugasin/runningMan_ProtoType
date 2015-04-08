@@ -16,6 +16,8 @@
 @implementation LocationDemoViewController
 
 @synthesize playerObjectList;
+@synthesize userID;
+@synthesize ServerIP;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +47,7 @@
     
     [playerObjectList retain];
 
+    [self startLocation];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -59,7 +62,7 @@
     _locService.delegate = nil;
 }
 //普通态
--(IBAction)startLocation:(id)sender
+-(void)startLocation
 {
     NSLog(@"进入普通定位态");
     
@@ -161,14 +164,17 @@
     
     [formatter release];
     
-    NSString *urlString =@"http://192.168.1.105:10000/player/report?id=";
-    NSString *lonString = @"&longitude=";
-    NSString *laString =@"&latitude=";
-    NSString *postString = [[NSString alloc]initWithFormat:@"%@%@%@%@%@%@", urlString ,Myself.uID,lonString, stringLongitude,laString,stringLatitude];
+    NSString *urlString =[[NSString alloc]initWithFormat:@"http://%@/player/report?id=", ServerIP];
+    NSString *lonString = [[NSString alloc]initWithFormat:@"&longitude=%@", stringLongitude];
+    NSString *laString =[[NSString alloc]initWithFormat:@"&latitude=%@", stringLatitude];
+    NSString *postString = [[NSString alloc]initWithFormat:@"%@%@%@%@", urlString ,userID,lonString,laString];
     
     NSURL *url = [NSURL URLWithString:postString];
     
     [postString release];
+    [urlString release];
+    [lonString release];
+    [laString release];
     
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
@@ -185,7 +191,7 @@
     for (unsigned int i=0; i<playerData.count; i++)
     {
         NSString *id = [[[retData objectForKey:@"players"] objectAtIndex:i] objectForKey:@"id"];
-        if (id == Myself.uID) {
+        if (id == userID) {
             continue;
         }
         

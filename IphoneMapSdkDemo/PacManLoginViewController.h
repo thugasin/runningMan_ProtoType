@@ -19,4 +19,5 @@
 @property(nonatomic, retain) LocationDemoViewController* locationViewController;
 
 -(IBAction)Login:(id)sender;
+- (IBAction)hidKeyBoard:(id)sender;
 @end

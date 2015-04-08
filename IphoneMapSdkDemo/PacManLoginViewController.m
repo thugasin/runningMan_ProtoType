@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    ServerIP.text = @"192.168.1.105";
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +47,19 @@
     UIBarButtonItem *customLeftBarButtonItem = [[UIBarButtonItem alloc] init];
     customLeftBarButtonItem.title = @"返回";
     self.navigationItem.backBarButtonItem = customLeftBarButtonItem;
+    
+    LDViewController.userID = self.phoneNumber.text;
+    LDViewController.ServerIP = self.ServerIP.text;
+    
+    
     [self.navigationController pushViewController:LDViewController animated:YES];
+   
+    
+}
+
+- (IBAction)hidKeyBoard:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 /*

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		361C10791AD2BE6300E4DD94 /* PacManLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 361C10781AD2BE6300E4DD94 /* PacManLoginViewController.xib */; };
 		361C107C1AD2BF1E00E4DD94 /* PacManLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361C107B1AD2BF1E00E4DD94 /* PacManLoginViewController.m */; };
-		3622EB261AC8F39B00280756 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3622EB251AC8F39B00280756 /* LoginViewController.m */; };
-		3622EB281AC8F42900280756 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3622EB271AC8F42900280756 /* LoginViewController.xib */; };
 		36BAC96C1ABC4A5C008CC668 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BAC96B1ABC4A5C008CC668 /* GameObject.m */; };
 		40A06DBC171BCEB80055E95E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A06DBB171BCEB80055E95E /* UIKit.framework */; };
 		40A06DBE171BCEB80055E95E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A06DBD171BCEB80055E95E /* Foundation.framework */; };
@@ -54,9 +52,6 @@
 		361C10781AD2BE6300E4DD94 /* PacManLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PacManLoginViewController.xib; sourceTree = "<group>"; };
 		361C107A1AD2BF1E00E4DD94 /* PacManLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacManLoginViewController.h; sourceTree = "<group>"; };
 		361C107B1AD2BF1E00E4DD94 /* PacManLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacManLoginViewController.m; sourceTree = "<group>"; };
-		3622EB241AC8F39B00280756 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		3622EB251AC8F39B00280756 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		3622EB271AC8F42900280756 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		36BAC96A1ABC4A5C008CC668 /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		36BAC96B1ABC4A5C008CC668 /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameObject.m; sourceTree = "<group>"; };
 		40A06DB7171BCEB80055E95E /* RunningManDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningManDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,8 +352,6 @@
 				E12075FD1755B4AA00E70513 /* LocationDemoViewController.m */,
 				36BAC96A1ABC4A5C008CC668 /* GameObject.h */,
 				36BAC96B1ABC4A5C008CC668 /* GameObject.m */,
-				3622EB241AC8F39B00280756 /* LoginViewController.h */,
-				3622EB251AC8F39B00280756 /* LoginViewController.m */,
 				361C107A1AD2BF1E00E4DD94 /* PacManLoginViewController.h */,
 				361C107B1AD2BF1E00E4DD94 /* PacManLoginViewController.m */,
 			);
@@ -371,7 +364,6 @@
 				40D648FA174BA52900D03105 /* RootViewController.xib */,
 				E12075DF1755B46000E70513 /* LocationDemoViewController.xib */,
 				40D648EB174BA52900D03105 /* MainWindow.xib */,
-				3622EB271AC8F42900280756 /* LoginViewController.xib */,
 				361C10781AD2BE6300E4DD94 /* PacManLoginViewController.xib */,
 			);
 			name = Xib;
@@ -445,7 +437,6 @@
 				40A06DC6171BCEB80055E95E /* InfoPlist.strings in Resources */,
 				361C10791AD2BE6300E4DD94 /* PacManLoginViewController.xib in Resources */,
 				40A06DCE171BCEB80055E95E /* Default.png in Resources */,
-				3622EB281AC8F42900280756 /* LoginViewController.xib in Resources */,
 				40A06DD0171BCEB80055E95E /* Default@2x.png in Resources */,
 				40A06DD2171BCEB80055E95E /* Default-568h@2x.png in Resources */,
 				40D6490B174BA52900D03105 /* MainWindow.xib in Resources */,
@@ -479,7 +470,6 @@
 				36BAC96C1ABC4A5C008CC668 /* GameObject.m in Sources */,
 				E120760B1755B4AA00E70513 /* AppDelegate.mm in Sources */,
 				E120760F1755B4AA00E70513 /* LocationDemoViewController.m in Sources */,
-				3622EB261AC8F39B00280756 /* LoginViewController.m in Sources */,
 				E12076141755B4AA00E70513 /* RootViewController.mm in Sources */,
 				361C107C1AD2BF1E00E4DD94 /* PacManLoginViewController.m in Sources */,
 				E19D0A201A3C29140065A004 /* JSONKit.m in Sources */,
